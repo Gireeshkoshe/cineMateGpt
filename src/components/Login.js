@@ -6,6 +6,7 @@ import {createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile 
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { AVATAR } from "../utils/constant";
 const Login=()=>{
     const navigate=useNavigate();
     const dispatch=useDispatch();
@@ -30,7 +31,7 @@ const Login=()=>{
                     const user = userCredential.user;
                     updateProfile(auth.currentUser, {
                         displayName:name.current.value,
-                         photoURL: "https://example.com/jane-q-user/profile.jpg"
+                         photoURL: AVATAR
                       }).then(() => { 
                         const {uid,email,displayName,photoURL} = auth.currentUser;
                         dispatch(addUser({
